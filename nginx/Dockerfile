@@ -6,11 +6,9 @@ RUN apk add --no-cache gettext
 WORKDIR /etc/nginx
 
 # Copy templates and entrypoint
-COPY template/nginx.conf /etc/nginx/templates/nginx.tmpl
+COPY nginx/template/nginx.conf /etc/nginx/nginx.conf
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
-
-chmod +x nginx/entrypoint.sh

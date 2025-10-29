@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9743731-36f6-4c07-834c-a5637f399c12" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/template/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/0/nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/0/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/template/nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +93,7 @@
       <updated>1761654781541</updated>
       <workItem from="1761654784788" duration="12440000" />
       <workItem from="1761696026548" duration="3159000" />
+      <workItem from="1761767043827" duration="1049000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
