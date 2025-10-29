@@ -42,3 +42,5 @@ services:
       - ./nginx/entrypoint.sh:/docker-entrypoint.d/entrypoint.sh
     environment:
       - ACTIVE_POOL=${ACTIVE_POOL}
+      - RELEASE_ID_BLUE=${RELEASE_ID_BLUE}
+      - RELEASE_ID_GREEN=${RELEASE_ID_GREEN}
