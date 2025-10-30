@@ -1,19 +1,25 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
-echo "🧪 Running CI Tests..."
-docker compose up -d
-sleep 5
+echo "🔍 Checking running containers..."
+docker ps
 
-RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/version)
+echo "🩺 Checking container health..."
+for container in blue green nginx; do
+  status=$(docker inspect -f '{{.State.Health.Status}}' $container 2>/dev/null || echo "not_found")
+  if [ "$status" != "healthy" ]; then
+    echo "❌ $container is not healthy! (status: $status)"
+    docker logs $container
+    exit 1
+  fi
+done
 
-if [ "$RESPONSE" -eq 200 ]; then
-  echo "✅ Nginx responded with 200 OK"
-else
-  echo "❌ Test Failed - Expected 200 OK, got $RESPONSE"
-  docker compose logs
+echo "🌐 Testing Nginx endpoint..."
+response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/version || true)
+
+if [ "$response" -ne 200 ]; then
+  echo "❌ Health check failed! Nginx returned HTTP $response"
   exit 1
 fi
 
-docker compose down -v
-echo "🧹 Cleaned up containers after test."
+echo "✅ All checks passed. Blue-Green deployment is healthy!"
